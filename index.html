@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+    body {
+        margin-top: 300px;
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #8aff80; /* Light green text color */
+    }
+    .calculator {
+        margin-top: 100px;
+        width: 240px; /* Reduced width */
+        margin: 50px auto;
+        border: 1px solid #000;
+        border-radius: 10px; /* Increased border radius */
+        padding: 20px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Darker shadow */
+        background: linear-gradient(to bottom, #333, #000); /* Adjusted gradient background */
+        transition: transform 0.2s ease-in-out; /* Smooth transition effect */
+    }
+    .calculator:hover {
+        transform: scale(1.05); /* Scale effect on hover */
+    }
+    input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        color: #8aff80; /* Light green text color */
+        background-color: #000;
+        border: none;
+        border-bottom: 1px solid #8aff80; /* Light green bottom border */
+        outline: none;
+    }
+    input[type="button"] {
+        width: 45px;
+        height: 45px;
+        margin: 5px;
+        font-size: 18px;
+        background-color: #444; /* Grey background */
+        color: #8aff80; /* Light green text color */
+        border: none;
+        cursor: pointer;
+        outline: none;
+        border-radius: 10px; /* Increased border radius */
+        transition: background-color 0.3s ease; /* Smooth transition effect */
+    }
+    input[type="button"].symbol,
+    input[type="button"].special {
+        color: yellow; /* Yellow color for symbols and special buttons */
+    }
+    input[type="button"]:hover {
+        background-color: #666; /* Darker grey on hover */
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="display" readonly>
+    <div>
+        <input type="button" value="7" onclick="addToDisplay('7')">
+        <input type="button" value="8" onclick="addToDisplay('8')">
+        <input type="button" value="9" onclick="addToDisplay('9')">
+        <input type="button" class="symbol" value="/" onclick="addToDisplay('/')">
+    </div>
+    <div>
+        <input type="button" value="4" onclick="addToDisplay('4')">
+        <input type="button" value="5" onclick="addToDisplay('5')">
+        <input type="button" value="6" onclick="addToDisplay('6')">
+        <input type="button" class="symbol" value="*" onclick="addToDisplay('*')">
+    </div>
+    <div>
+        <input type="button" value="1" onclick="addToDisplay('1')">
+        <input type="button" value="2" onclick="addToDisplay('2')">
+        <input type="button" value="3" onclick="addToDisplay('3')">
+        <input type="button" class="symbol" value="-" onclick="addToDisplay('-')">
+    </div>
+    <div>
+        <input type="button" value="0" onclick="addToDisplay('0')">
+        <input type="button" class="symbol" value="." onclick="addToDisplay('.')">
+        <input type="button" class="special" value="=" onclick="calculate()">
+        <input type="button" class="special" value="+" onclick="addToDisplay('+')">
+    </div>
+    <div>
+        <input type="button" class="special" value="C" onclick="clearDisplay()">
+        <input type="button" class="symbol" value="√" onclick="squareRoot()">
+        <input type="button" class="symbol" value="x²" onclick="square()">
+        <input type="button" class="symbol" value="%" onclick="percentage()">
+    </div>
+</div>
+<script>
+    function addToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+        var display = document.getElementById('display').value;
+        try {
+            var result = eval(display);
+            document.getElementById('display').value = result;
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function squareRoot() {
+        var display = document.getElementById('display').value;
+        var result = Math.sqrt(eval(display));
+        document.getElementById('display').value = result;
+    }
+
+    function square() {
+        var display = document.getElementById('display').value;
+        var result = Math.pow(eval(display), 2);
+        document.getElementById('display').value = result;
+    }
+
+    function percentage() {
+        var display = document.getElementById('display').value;
+        var result = eval(display) / 100;
+        document.getElementById('display').value = result;
+    }
+</script>
+</body>
+</html>
+
