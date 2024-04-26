@@ -11,5 +11,9 @@ Beautifully designed and fully functional, it's the perfect blend of form and fu
 - Clean design
 - You can use it for your website or any other project
 
+New image (GIF) update:
+
+- ![GIF](https://github.com/Okultix/calculator-html-js/assets/167861136/3e09efd2-60ec-49ed-af82-d4eda802be13)
+
 Thank youu for your attention,
 Ox
